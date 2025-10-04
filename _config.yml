@@ -1,0 +1,14 @@
+title: "Harshal's Notes"
+description: "Deep dives and demos from the lab"
+theme: minima
+author: Harshal Patil
+github_username: harche
+url: "https://harche.github.io"
+baseurl: "/blog"
+minima:
+  social_links:
+    - platform: github
+      user_url: https://github.com/harche
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
