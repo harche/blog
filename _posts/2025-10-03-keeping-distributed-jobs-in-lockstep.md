@@ -6,9 +6,9 @@ date: 2025-10-03
 author: Harshal Patil
 ---
 
-*Author: [Harshal Patil](https://github.com/harche)*
+*Author: [Harshal Patil](https://github.com/harche){:target="_blank" rel="noopener"}*
 
-Distributed workloads love to act like a synchronized swim team: either everyone dives in together or someone belly flops alone. **Gang scheduling** is how you keep the choreography perfect. Using [LeaderWorkerSet (LWS)](https://github.com/kubernetes-sigs/lws) together with the [Volcano scheduler](https://github.com/volcano-sh/volcano), we can see exactly how that works across a few real scenarios. The manifests and scripts in this companion sandbox — [`lws-gang-demo`](https://github.com/harche/lws-gang-demo) — simply give us a convenient stage.
+Distributed workloads love to act like a synchronized swim team: either everyone dives in together or someone belly flops alone. **Gang scheduling** is how you keep the choreography perfect. Using [LeaderWorkerSet (LWS)](https://github.com/kubernetes-sigs/lws){:target="_blank" rel="noopener"} together with the [Volcano scheduler](https://github.com/volcano-sh/volcano){:target="_blank" rel="noopener"}, we can see exactly how that works across a few real scenarios. The manifests and scripts in this companion sandbox — [`lws-gang-demo`](https://github.com/harche/lws-gang-demo){:target="_blank" rel="noopener"} — simply give us a convenient stage.
 
 ---
 
@@ -25,7 +25,7 @@ With LWS, we get leader/worker orchestration for stateful or distributed jobs. P
 
 ## Setting the Stage
 
-The sandbox uses a small [kind](https://github.com/kubernetes-sigs/kind) cluster and a few setup steps:
+The sandbox uses a small [kind](https://github.com/kubernetes-sigs/kind){:target="_blank" rel="noopener"} cluster and a few setup steps:
 
 1. **Create the environment** – `scripts/setup-cluster.sh` builds a four-node kind cluster, installs Volcano, installs LWS v0.7.0, and patches the LWS config so `gangSchedulingManagement.schedulerProvider` is set to `volcano`.
 2. **Grant permissions** – `manifests/setup/volcano-rbac.yaml` gives the LWS controller the right to create and manage Volcano PodGroups.
