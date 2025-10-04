@@ -8,7 +8,7 @@ author: Harshal Patil
 
 *Author: [Harshal Patil](https://github.com/harche){:target="_blank" rel="noopener"}*
 
-I opened the repo [`harche/cuda-ipc-debugging`](https://github.com/harche/cuda-ipc-debugging){:target="_blank" rel="noopener"} to keep track of the ways CUDA inter-process communication (IPC) behaves when you throw it at bare metal, at two pods shouting across an `emptyDir`, or at Kubernetes Dynamic Resource Allocation (DRA). The directories named `kubernetes/` and `openshift/` are historical baggage—everything current is under the other folders we’ll tour below.
+I opened the repo [`harche/cuda-ipc-debugging`](https://github.com/harche/cuda-ipc-debugging){:target="_blank" rel="noopener"} to keep track of the ways CUDA inter-process communication (IPC) behaves when you throw it at bare metal, at two pods shouting across an `emptyDir`, or at Kubernetes Dynamic Resource Allocation (DRA).
 
 This post is long on purpose. Each section explains **what we tried, how to run it yourself, the exact security knobs that matter,** and the expected output (including the failure modes we tripped over). If you’re debugging CUDA IPC on a cluster, consider this your field guide.
 
