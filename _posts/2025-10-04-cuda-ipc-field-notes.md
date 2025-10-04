@@ -271,25 +271,4 @@ Set this up first; nothing in the DRA section works without it.
 
 ---
 
-## Troubleshooting Playbook
 
-| Symptom | Likely Cause | Fix |
-| --- | --- | --- |
-| `cudaIpcOpenMemHandle: invalid device context` | No shared PID namespace | Enable `hostPID: true` or `shareProcessNamespace: true` |
-| `cudaIpcOpenMemHandle: invalid argument` | Not privileged (non-DRA paths) | Add `securityContext.privileged: true` |
-| Consumer hangs waiting for handle | Producer never wrote the ready flag | Check producer logs; ensure it’s running first |
-| Pod stays `Init` in DRA scenario | ResourceClaim not bound | `kubectl describe resourceclaim ...` to debug driver deployment |
-| Sum is zero in bare-metal example | Consumer never executed or failed silently | Check consumer stdout/stderr |
-
-If all else fails, run `nvidia-smi` inside each container to confirm the device list. It saves a lot of time when the scheduler quietly lands pods on different nodes.
-
----
-
-## Future Experiments
-
-1. **Smarter handshakes**: Replace the file-based ready signal with gRPC or a lightweight REST callback so the producer can exit when the consumer finishes.
-2. **Better metrics**: Add Prometheus exporters for IPC latency and throughput to quantify the impact of DRA vs. traditional setups.
-3. **Cross-node IPC**: Investigate NVSwitch/NVLink + GPUDirect RDMA to see how far IPC handles can travel.
-4. **Device awareness**: Extend `peer_access_matrix.cu` to print `cudaDeviceProp` so you know exactly which SKU each index maps to.
-
-Got improvements or horror stories? Open an issue or PR on the repo. CUDA IPC still has sharp edges, but with these experiments you at least know which gloves to wear.
