@@ -18,6 +18,9 @@ Multi-pod jobs fall apart when only part of the team runs. Without coordination,
 
 With LWS, we get leader/worker orchestration for stateful or distributed jobs. Pairing it with Volcano brings the “all-or-nothing” scheduling behaviour needed for reliability.
 
+
+![Pods diving together to show synchronized scheduling]({{ '/assets/images/gang-scheduling/overview.png' | relative_url }})
+
 ---
 
 ## Setting the Stage
@@ -33,6 +36,8 @@ That’s all scaffolding; the interesting part is watching what happens when pod
 ---
 
 ## Scenario 1 – All Pods Ready? Launch Together
+
+![Visualization of all pods launching together under gang scheduling]({{ '/assets/images/gang-scheduling/scenario1.png' | relative_url }})
 
 Manifest: `manifests/examples/gang-test.yaml`
 
@@ -51,6 +56,8 @@ Takeaway: the gang scheduler is invisible when capacity exists — everything st
 ---
 
 ## Scenario 2 – Resource Pinch, Zero Partial Launches
+
+![Illustration of pods waiting because resources are constrained]({{ '/assets/images/gang-scheduling/scenario2.png' | relative_url }})
 
 Manifest: `manifests/examples/gang-constrained.yaml`
 
@@ -98,6 +105,8 @@ Takeaway: gang scheduling prevents the classic deadlock where one leader runs, w
 ---
 
 ## Scenario 3 – Default Scheduler and the Sad Trombone
+
+![Pods out of sync to represent partial deployment]({{ '/assets/images/gang-scheduling/scenario3.png' | relative_url }})
 
 Manifest: `manifests/examples/no-gang.yaml`
 
