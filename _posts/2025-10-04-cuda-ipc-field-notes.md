@@ -19,7 +19,6 @@ This post is long on purpose. Each section explains **what we tried, how to run 
 - **GPU hardware**: Any NVIDIA GPU that supports peer access. I ran most tests on L4s but the patterns hold for A100s as well.
 - **Driver/runtime**: NVIDIA container runtime (`nvidia-container-toolkit`) with CUDA 12.x.
 - **Cluster baseline**: Kubernetes 1.31 for the DRA scenarios; earlier versions work for the non-DRA experiments.
-- **Helper script**: `which_gpu.sh` in the repo prints the device list inside a container—handy when you’re not sure what the scheduler handed you.
 
 If you want to check topology, compile and run `ipc_example/peer_access_matrix.cu`. It prints a matrix of `cudaDeviceCanAccessPeer(i, j)` values so you can confirm which GPU pairs support peer access.
 
@@ -282,7 +281,7 @@ Set this up first; nothing in the DRA section works without it.
 | Pod stays `Init` in DRA scenario | ResourceClaim not bound | `kubectl describe resourceclaim ...` to debug driver deployment |
 | Sum is zero in bare-metal example | Consumer never executed or failed silently | Check consumer stdout/stderr |
 
-If all else fails, run `which_gpu.sh` inside each container to confirm the device list. It saves a lot of time when the scheduler quietly lands pods on different nodes.
+If all else fails, run `nvidia-smi` inside each container to confirm the device list. It saves a lot of time when the scheduler quietly lands pods on different nodes.
 
 ---
 
